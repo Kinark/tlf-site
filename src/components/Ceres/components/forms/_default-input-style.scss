@@ -16,37 +16,31 @@
    box-sizing: border-box;
    order: 1;
    appearance: none;
-   font: inherit;
-   
-   // Disabled input style
+   font: inherit; // Disabled input style
    &:disabled, &[readonly="readonly"] {
       color: $input-disabled-color;
       border: $input-disabled-border;
-   }
-   
-   // Disabled label style
+   } // Disabled label style
    &:disabled, &[readonly="readonly"] {
-      &+label, &+.prefix, &+.prefix+label {color: $input-disabled-color;}
-   }
-   
-   // Hovered input style
+      &+label, &+.prefix, &+.prefix+label {
+         color: $input-disabled-color;
+      }
+   } // Hovered input style
    &:hover:not([readonly]) {
       border-color: $input-hover-color;
-   }
-   
-   // Hovered label/icon style
+   } // Hovered label/icon style
    &:hover:not([readonly]) {
-      &+label, &+.prefix, &+.prefix+label {color: darken($input-hover-color, 30%);}
-   }
-   
-   // Focused input style
+      &+label, &+.prefix, &+.prefix+label {
+         color: $label-hover-color;
+      }
+   } // Focused input style
    &:focus:not([readonly]) {
       border-color: $input-focus-color;
       outline: none;
-   }
-   
-   // Focused label style
+   } // Focused label style
    &:focus:not([readonly]) {
-      &+label, &+.prefix, &+.prefix+label {color: $input-focus-color;}
+      &+label, &+.prefix, &+.prefix+label {
+         color: $input-focus-color;
+      }
    }
 }

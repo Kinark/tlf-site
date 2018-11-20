@@ -25,15 +25,15 @@ class Footer extends React.Component {
                      <h5 className="dead-blue-light-text tk-museo weight-thin">...and it shall not be forgotten.</h5>
                   </div>
                </div>
-               <div className="row xs-middle no-mrg-bot">
+               <div className="row xs-middle no-mrg-bot center-on-small-only">
                   <div className="col xs12 m4">
                      <h5 className="weight-thin no-mrg">Follow us</h5>
                      <h6 className="weight-thin no-mrg-top">If you want...</h6>
-                     <div>
-                        <DiscordLink />
-                        <FacebookLink />
-                        <YoutubeLink />
-                        <TwitterLink />
+                     <div className="row xs-middle">
+                        <div className="col xs"><DiscordLink /></div>
+                        <div className="col xs"><FacebookLink /></div>
+                        <div className="col xs"><YoutubeLink /></div>
+                        <div className="col xs"><TwitterLink /></div>
                      </div>
                   </div>
                   <div className="col xs12 m4 center">

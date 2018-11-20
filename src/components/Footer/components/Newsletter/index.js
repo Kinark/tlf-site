@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import apiPath from '~/utils/apiPath'
 
+import Input from '~/components/Input'
+import Button from '~/components/Button'
+
 // import styles from './styles.scss';
 
 export default class Newsletter extends React.Component {
@@ -17,9 +20,10 @@ export default class Newsletter extends React.Component {
 
    handleInput = e => this.setState({ newsletterEmail: e.target.value })
 
-   addEmail = () => {
+   addEmail = e => {
+      e.preventDefault();
       const { newsletterEmail } = this.state
-      axios.post(`${apiPath}/api/newsletteremail`, { Email: newsletterEmail }, { cancelToken: this.activeAxios.token })
+      axios.post(`${apiPath}/api/newsletteremails`, { Email: newsletterEmail }, { cancelToken: this.activeAxios.token })
          .then(() => this.setState({ success: true }))
          .catch(() => this.setState({ success: false }))
    }
@@ -30,11 +34,13 @@ export default class Newsletter extends React.Component {
          <React.Fragment>
             Add your email to our newsletter.<br />
             We won't flood you. It's a promise.
-            <form onSubmit={this.addEmail} className="row no-mrg">
-               <div className="input-field col xs12 center">
-                  <input type="text" name="newsletterEmail" value={newsletterEmail} onChange={this.handleInput} placeholder="example@email.com" className="center dead-blue-clear-text" />
+            <form onSubmit={this.addEmail}>
+               <div className="row">
+                  <div className="input-field col xs12 center">
+                     <Input name="author" value={newsletterEmail} onChange={this.handleInput} placeholder="example@email.com" className="center" unlabeled />
+                  </div>
+                  <div className="col xs12"><Button type="submit">Submit</Button></div>
                </div>
-               <br /><button type="submit">Ahhhh</button>
                {success === true && <p>Success, email added!</p>}
                {success === false && <p>Email already added.</p>}
             </form>

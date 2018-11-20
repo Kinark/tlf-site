@@ -25,15 +25,19 @@ Description.propTypes = {
    children: PropTypes.string.isRequired
 }
 
+// export const Title = ({ children: title }) => (
+//    <Helmet>
+//       <title>{title}</title>
+//       <meta property="og:title" content={title} />
+//       <meta property="og:site_name" content={title} />
+//       <meta name="twitter:title" content={title} />
+//       <meta name="apple-mobile-web-app-title" content={title} />
+//       <meta name="application-name" content={title} />
+//    </Helmet>
+// )
+
 export const Title = ({ children: title }) => (
-   <Helmet>
-      <title>{title}</title>
-      <meta property="og:title" content={title} />
-      <meta property="og:site_name" content={title} />
-      <meta name="twitter:title" content={title} />
-      <meta name="apple-mobile-web-app-title" content={title} />
-      <meta name="application-name" content={title} />
-   </Helmet>
+   <Helmet title={title} />
 )
 
 Title.propTypes = {

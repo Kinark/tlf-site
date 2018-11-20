@@ -1,4 +1,5 @@
 import React from 'react';
+import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router-dom';
 import { Title, Metas } from '~/components/Metas';
 import Favicon from '~/components/Favicon';
@@ -20,14 +21,11 @@ import styles from './styles.scss'
 import './styles.global.scss';
 import './components/Ceres/styles.global.scss';
 
-export default class App extends React.Component {
-   constructor(props) {
-      super(props);
-      this.state = {
-         inverted: false,
-         appTitle: 'The Last Flame',
-         appTitleBar: true
-      };
+class App extends React.Component {
+   state = {
+      inverted: false,
+      appTitle: 'The Last Flame',
+      appTitleBar: true
    }
 
    turnOnInverted = () => { this.setState({ inverted: true }); };
@@ -42,9 +40,9 @@ export default class App extends React.Component {
       const description = 'The Last Flame is a indie game development company. We hope to lit your way and make you fall in love with our games :)';
       return (
          <AppContext.Provider value={{ inverted, appTitle, appTitleBar, turnOnInverted, turnOffInverted, changeAppTitle }}>
-            <Favicon />
+            {/* <Favicon /> */}
             <Title>{appTitle}</Title>
-            <Metas description={description} />
+            {/* <Metas description={description} /> */}
             <div id="content" className={`${styles.appColors} ${inverted ? styles.inverted : ''}`}>
                <Route path="/(.+)" component={Navbar} />
                {appTitleBar === true && <PageTitle />}
@@ -65,3 +63,5 @@ export default class App extends React.Component {
       );
    }
 }
+
+export default hot(module)(App)

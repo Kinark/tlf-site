@@ -12,6 +12,7 @@ module.exports = {
       node: true
    },
    rules: {
+      'jsx-a11y/label-has-for': false,
       'no-plusplus': 'off',
       'class-methods-use-this': [0, { exceptMethods: ['getDataFromRpc'] }],
       'max-len': 0,
@@ -53,7 +54,6 @@ module.exports = {
             ]
          }
       ],
-      'react/jsx-no-bind': 'off',
       'react/jsx-filename-extension': [
          'error',
          {

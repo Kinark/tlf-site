@@ -14,6 +14,7 @@ const GameNavbar = ({ game }) => (
             {game.GooglePlayURL && <li><a target="_blank" rel="noopener noreferrer" href={game.GooglePlayURL}><i className="icon-shopping-basket-1" />Buy on GP</a></li>}
             {game.AppStoreURL && <li><a target="_blank" rel="noopener noreferrer" href={game.AppStoreURL}><i className="icon-shopping-basket-1" />Buy on AppStore</a></li>}
             {game.MediaKit && <li><a target="_blank" rel="noopener noreferrer" href={game.MediaKit.url}><i className="icon-receipt-1" />Media Kit</a></li>}
+            {game.SpecialPageURL && <li><a target="_blank" rel="noopener noreferrer" href={game.SpecialPageURL}><i className="icon-origami-paper-bird" />Special Page</a></li>}
          </ul>
       </div>
    </nav>

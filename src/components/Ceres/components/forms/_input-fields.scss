@@ -4,28 +4,22 @@
    margin-top: calc(1rem + #{$label-font-size});
    margin-bottom: 1rem;
    display: flex;
-   align-items: center;
-   
-   // Inline styles
+   align-items: center; // Inline styles
    &.inline {
       display: inline-flex;
       vertical-align: middle;
       margin-left: 5px;
-      
       input, .select-dropdown {
          margin-bottom: 1rem;
       }
-   }
-   
-   // Gutter spacing
+   } // Gutter spacing
    &.col {
       label {
          left: $gutter-width / 2;
       }
    }
-   
-   & > label {
-      color: #76797d;
+   &>label {
+      color: $label-color;
       position: absolute;
       top: -1*$label-font-size - 0.45*$label-font-size;
       left: 0;
@@ -33,9 +27,7 @@
       cursor: text;
       transition: color .2s ease-out;
       text-align: initial;
-   }
-   
-   // Prefix Icons
+   } // Prefix Icons
    .prefix {
       font-size: 2rem;
       width: 3rem;
@@ -44,6 +36,7 @@
       flex-shrink: 0;
       cursor: default;
    }
-   
-   .prefix ~ label { margin-left: 3rem; }
+   .prefix~label {
+      margin-left: 3rem;
+   }
 }
