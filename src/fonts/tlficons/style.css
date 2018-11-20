@@ -24,9 +24,13 @@ i {
    -moz-osx-font-smoothing: grayscale;
 }
 
-/* [class^="icon-"]:before {
-   color: #fff;
-} */
+i[class^="icon-"].large {
+   font-size: 48px;
+}
+
+i[class^="icon-"].xlarge {
+   font-size: 72px;
+}
 
 .icon-airplane:before {
    content: "\e900";

@@ -58,7 +58,7 @@ class App extends React.Component {
             <div id="footer">
                <Footer />
             </div>
-            <div className="screen-detector" />
+            {process.env.NODE_ENV === 'production' ? '' : (<div className="screen-detector" />)}
          </AppContext.Provider>
       );
    }

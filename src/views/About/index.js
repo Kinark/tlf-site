@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 import { withContext } from '~/instances/context';
+import fetchMembers from '~/services/fetchMembers';
+
 import { FlameTLF } from '~/components/TLFLogo';
 
 import clockImg from './images/clock_image.jpg';
@@ -12,18 +15,30 @@ class About extends React.Component {
       context: PropTypes.shape({}).isRequired,
    }
 
+   state = {
+      members: []
+   }
+
    componentWillMount = () => {
       const { context } = this.props
       context.turnOnInverted();
       context.changeAppTitle('About');
    }
 
+   componentDidMount = () => {
+      fetchMembers(this.activeAxios.token).then(members => this.setState({ members })).catch(e => console.log(e))
+   }
+
    componentWillUnmount = () => {
       const { context } = this.props
+      this.activeAxios.cancel('Canceled by the user.')
       context.turnOffInverted();
    }
 
+   activeAxios = axios.CancelToken.source()
+
    render() {
+      const { members } = this.state;
       return (
          <React.Fragment>
             <div className="container">
@@ -58,14 +73,17 @@ class About extends React.Component {
                               <h2 className="tk-europa weight-bold">So...</h2>
                               <p>As a little company with a few assiduous members that are working really hard to make a dream come true, we feel kind of ashamed to write about ourselves.</p>
                               <p>So take our names and base functions:</p>
-                              <div className="row">
-                                 <div className={`col s4 xs12 ${styles.staffMember}`}><span>Bruno Godoi</span><span>Programmer</span></div>
-                                 <div className={`col s4 xs12 ${styles.staffMember}`}><span>Ernesto Junior</span><span>Illustrator</span></div>
-                              </div>
-                              <div className="row">
-                                 <div className={`col s4 xs12 ${styles.staffMember}`}><span>Igor Marcossi</span><span>Writer & WebDev</span></div>
-                                 <div className={`col s4 xs12 ${styles.staffMember}`}><span>Matheus Augusto</span><span>Writer</span></div>
-                              </div>
+                              {members.length && (
+                                 <div className="row">
+                                    <div className="col xs12 l7">
+                                       <div className="row">
+                                          {members.filter(each => each.Active === true).map(member => (
+                                             <div key={member.id} className={`col s6 xs12 ${styles.staffMember}`}><span>{member.ShortName}</span><span>{member.Position}</span></div>
+                                          ))}
+                                       </div>
+                                    </div>
+                                 </div>
+                              )}
                            </div>
                         </div>
                      </div>

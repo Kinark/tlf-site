@@ -6,6 +6,7 @@ import axios from 'axios';
 import { withContext } from '~/instances/context';
 import fetchGames from '~/services/fetchGames';
 
+import Loader from './components/Loader';
 import GameTemplate from './components/GameTemplate';
 // import styles from './styles.scss';
 
@@ -42,7 +43,7 @@ class Game extends React.Component {
 
    render() {
       const { loading, gameInfo } = this.state;
-      if (loading) return <p>Loading game...</p>
+      if (loading) return <Loader />
       return <GameTemplate game={gameInfo} />
    }
 }

@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Input = ({ name, unlabeled, type, className, label, ...rest }) => (
+const Input = ({ name, unlabeled, className, label, ...rest }) => (
    <React.Fragment>
-      <input type={type} id={name} name={name} className={`dead-blue-clear-text ${className}`} {...rest} />
+      <textarea id={name} name={name} className={`dead-blue-clear-text ${className}`} {...rest} />
       {!unlabeled && <label htmlFor={name}>{label}</label>}
    </React.Fragment>
 )
@@ -12,7 +12,6 @@ const Input = ({ name, unlabeled, type, className, label, ...rest }) => (
 Input.propTypes = {
    name: PropTypes.string.isRequired,
    unlabeled: PropTypes.bool,
-   type: PropTypes.string,
    label: PropTypes.string,
    className: PropTypes.oneOfType([
       PropTypes.string,
@@ -23,7 +22,6 @@ Input.propTypes = {
 Input.defaultProps = {
    unlabeled: false,
    label: '',
-   type: 'text',
    className: ''
 }
 
