@@ -5,6 +5,8 @@ import { withContext } from '~/instances/context';
 import { FlameTLF, TypeTLF } from '~/components/TLFLogo';
 import { DiscordLink, FacebookLink, YoutubeLink, TwitterLink } from '~/components/SocialLinks';
 
+import Newsletter from './components/Newsletter'
+
 import styles from './styles.scss';
 
 
@@ -35,13 +37,7 @@ class Footer extends React.Component {
                      </div>
                   </div>
                   <div className="col xs12 m4 center">
-                     Add your email to our newsletter.<br />
-                     We won't flood you. It's a promise.
-                     <div className="row no-mrg">
-                        <div className="input-field col xs12 center">
-                           <input type="text" name="lol" id="lol" placeholder="example@email.com" className="center dead-blue-clear-text" />
-                        </div>
-                     </div>
+                     <Newsletter />
                   </div>
                   <div className="col xs12 m4 middle-xs">
                      <div className="row xs-middle no-mrg">

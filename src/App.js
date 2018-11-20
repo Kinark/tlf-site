@@ -14,7 +14,7 @@ import Contact from '~/views/Contact';
 import About from '~/views/About';
 import Games from '~/views/Games';
 import Game from '~/views/Game';
-import Deeplake from '~/views/Deeplake';
+// import Deeplake from '~/views/Deeplake';
 
 import styles from './styles.scss'
 import './styles.global.scss';
@@ -54,7 +54,7 @@ export default class App extends React.Component {
                   <Route path="/about" component={About} />
                   <Route path="/games" component={Games} />
                   <Route path="/game/:gameTitle" component={Game} />
-                  <Route path="/deeplake" component={Deeplake} />
+                  {/* <Route path="/deeplake" component={Deeplake} /> */}
                </Switch>
             </div>
             <div id="footer">

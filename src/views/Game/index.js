@@ -34,7 +34,11 @@ class Game extends React.Component {
 
    activeAxios = axios.CancelToken.source()
 
-   injectGames = gameInfo => this.setState({ gameInfo, loading: false })
+   injectGames = gameInfo => {
+      const { context } = this.props
+      context.changeAppTitle(gameInfo.Name, false);
+      this.setState({ gameInfo, loading: false })
+   }
 
    render() {
       const { loading, gameInfo } = this.state;

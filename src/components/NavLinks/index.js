@@ -12,6 +12,6 @@ export default () => (
          <a target="_blank" rel="noopener noreferrer" href="https://medium.com/the-last-flame">BLOG</a>
       </li>
       <NavItem to="/about">About</NavItem>
-      <NavItem to="/deeplake">Deeplake</NavItem>
+      {/* <NavItem to="/deeplake">Deeplake</NavItem> */}
    </React.Fragment>
 )

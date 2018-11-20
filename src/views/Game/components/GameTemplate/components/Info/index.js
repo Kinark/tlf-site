@@ -1,4 +1,5 @@
 import React from 'react';
+import dateFormat from 'dateformat'
 
 import apiPath from '~/utils/apiPath';
 import gameType from '~/types/gameType';
@@ -12,7 +13,7 @@ const Info = ({ game }) => (
          <div className="col xs8">
             <span className="weight-bold">Genre: </span>{game.Genre}<br />
             <span className="weight-bold">Released: </span>{game.Released}<br />
-            <span className="weight-bold">Release date: </span>{game.ReleaseDate}<br />
+            <span className="weight-bold">Release date: </span>{dateFormat(game.ReleaseDate, 'mm/dd/yyyy')}<br />
             <span className="weight-bold">Platforms: </span>{game.Platforms}<br />
          </div>
          <div className="col xs4">

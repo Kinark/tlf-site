@@ -83,7 +83,7 @@ $label-font-size: 1rem !default;
 $input-disabled-color: rgba(0,0,0, .42) !default;
 $input-disabled-solid-color: #949494 !default;
 $input-disabled-border: 1px dotted $input-disabled-color !default;
-$placeholder-text-color: lighten($input-border-color, 20%) !default;
+$placeholder-text-color: darken($input-border-color, 20%) !default;
 
 // Radio/Checkbox Buttons
 $checkers-border-color: color("blue-grey", "lighten-4") !default;

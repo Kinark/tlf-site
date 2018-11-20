@@ -17,13 +17,13 @@ export default shape({
    ReleaseDate: string.isRequired,
    SpecialPageURL: string,
    SteamURL: string,
-   TrailerURL: string,
+   YouTubeTrailerID: string,
    Screenshots: array,
    MediaKit: shape({
       url: string,
       id: string
    }),
-   press: arrayOf(
+   presses: arrayOf(
       shape({
          Active: bool,
          Title: string,

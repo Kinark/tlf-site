@@ -11,8 +11,8 @@ const Trailer = ({ game }) => (
       <h5 className="tk-museo"><i className="icon-video-clip-3" />Trailer</h5>
       <div className="row">
          <div className="col xs12">
-            {game.TrailerURL
-               ? <Video src={game.TrailerURL} title={`${game.Name} Trailer`} />
+            {game.YouTubeTrailerID
+               ? <Video src={game.YouTubeTrailerID} title={`${game.Name} Trailer`} />
                : <img src={apiPath + game.Logo.url} className="center" height="200" alt={game.Name} />
             }
          </div>
