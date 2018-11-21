@@ -6,6 +6,7 @@ import { withContext } from '~/instances/context';
 import fetchMembers from '~/services/fetchMembers';
 
 import { FlameTLF } from '~/components/TLFLogo';
+import Loader from 'react-loader-spinner'
 
 import clockImg from './images/clock_image.jpg';
 import styles from './styles.scss';
@@ -73,7 +74,8 @@ class About extends React.Component {
                               <h2 className="tk-europa weight-bold">So...</h2>
                               <p>As a little company with a few assiduous members that are working really hard to make a dream come true, we feel kind of ashamed to write about ourselves.</p>
                               <p>So take our names and base functions:</p>
-                              {members.length && (
+                              {!members.length && <Loader type="Ball-Triangle" color="#0f0f0f" height={50} width={50} />}
+                              {members.length > 0 && (
                                  <div className="row">
                                     <div className="col xs12 l7">
                                        <div className="row">
