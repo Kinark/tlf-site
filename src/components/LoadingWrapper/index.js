@@ -9,6 +9,11 @@ export default class LoadingWrapper extends React.Component {
    static propTypes = {
       loading: PropTypes.bool.isRequired,
       children: PropTypes.node.isRequired,
+      color: PropTypes.string,
+   }
+
+   static defaultProps = {
+      color: '#fafafa'
    }
 
    state = {
@@ -23,11 +28,11 @@ export default class LoadingWrapper extends React.Component {
    }
 
    render() {
-      const { children } = this.props;
+      const { children, color } = this.props;
       const { loading } = this.state;
       return (
          <div className={styles.loadingWrapper}>
-            {loading && <div className={styles.preloaderWrapper}><Loader type="Ball-Triangle" color="#fafafa" height={80} width={80} /></div>}
+            {loading && <div className={styles.preloaderWrapper}><Loader type="Ball-Triangle" color={color} height={80} width={80} /></div>}
             <div className={styles.content + (loading ? ` ${styles.loading}` : '')}>{children}</div>
          </div>
       );
