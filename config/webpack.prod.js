@@ -60,7 +60,7 @@ module.exports = merge(common, {
       new CleanWebpackPlugin(['dist/**/*'], { root: path.resolve(__dirname, '../') }),
       new ImageminPlugin(ImageminPluginConfig),
       new ManifestPlugin(ManifestPluginConfig),
-      new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false, reportFilename: path.resolve(__dirname, '../dist/stats/bundlo-size-report.html') }),
+      new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false, reportFilename: path.resolve(__dirname, '../dist/stats/bundle-size-report.html') }),
       new MiniCssExtractPlugin({ filename: 'static/css/[name].css', chunkFilename: '[id].css' }),
       new PurifyCSSPlugin({
          paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
