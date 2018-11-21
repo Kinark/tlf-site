@@ -99,7 +99,6 @@ class Contact extends React.Component {
                      <Button onClick={this.restartForm}>Try again</Button>
                   </div>
                )}
-               {success === false && <p>Ooops!</p>}
             </div>
          </React.Fragment>
       )
