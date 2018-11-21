@@ -1,0 +1,11 @@
+{
+  "main.css": "/static/css/main.css",
+  "main.js": "/static/js/bundle.js",
+  "index.html": "/index.html",
+  "static/media/apple-touch-icon-152x152.png": "/static/media/175707cb6287fd03b22f4aee407e518a-apple-touch-icon-152x152.png",
+  "static/media/clock_image.jpg": "/static/media/9c906514382d089bfc545e020bf03af2-clock_image.jpg",
+  "static/media/styles.global.scss": "/static/media/c91f5ae970ebd2440278061a2b26f385-tlficons.svg",
+  "static/media/styles.scss": "/static/media/d71f139f6671ab91282100b2f5195ac6-Lifeless.png",
+  "static/media/tlf-full@2x.png": "/static/media/e99f9a0c92d92d08b19743e842d419fe-tlf-full@2x.png",
+  "static/media/LifelessRainLogo@2x.png": "/static/media/efec4d6161375bd22d823864d239db42-LifelessRainLogo@2x.png"
+}
