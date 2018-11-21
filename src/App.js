@@ -3,8 +3,10 @@ import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router-dom';
 import { Title, Metas } from '~/components/Metas';
 import Favicon from '~/components/Favicon';
+import { loadReCaptcha } from 'react-recaptcha-v3'
 
 import { AppContext } from '~/instances/context';
+import variables from '~/instances/variables';
 
 import PageTitle from '~/components/PageTitle';
 import Navbar from '~/components/Navbar';
@@ -27,6 +29,8 @@ class App extends React.Component {
       appTitle: 'The Last Flame',
       appTitleBar: true
    }
+
+   componentDidMount = () => loadReCaptcha(variables.recaptchaCode)
 
    turnOnInverted = () => { this.setState({ inverted: true }); };
 

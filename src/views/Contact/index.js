@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { loadReCaptcha, ReCaptcha } from 'react-recaptcha-v3'
+import { ReCaptcha } from 'react-recaptcha-v3'
 
 import apiPath from '~/utils/apiPath'
+import variables from '~/instances/variables';
 import { withContext } from '~/instances/context';
 
 import LoadingWrapper from '~/components/LoadingWrapper'
@@ -11,7 +12,6 @@ import Textarea from '~/components/Textarea'
 import Input from '~/components/Input'
 import Button from '~/components/Button'
 
-const recaptchaCode = '6LeRDHwUAAAAAP8opZE97Ksi8aEG87vVNAL3T2-0'
 const maxMessages = 5
 
 class Contact extends React.Component {
@@ -33,8 +33,6 @@ class Contact extends React.Component {
       const { context } = this.props
       context.changeAppTitle('Contact');
    }
-
-   componentDidMount = () => loadReCaptcha(recaptchaCode);
 
    componentWillUnmount = () => this.activeAxios.cancel('Canceled by the user.')
 
@@ -63,7 +61,7 @@ class Contact extends React.Component {
                {success === null && (
                   <LoadingWrapper loading={loading}>
                      <form onSubmit={this.formHandler}>
-                        <ReCaptcha sitekey={recaptchaCode} verifyCallback={this.verifyRecaptcha} />
+                        <ReCaptcha sitekey={variables.recaptchaCode} verifyCallback={this.verifyRecaptcha} />
                         <div className="row">
                            <div className="input-field col xs12 m6">
                               <Input maxLength="70" name="author" label="Name" value={author} onChange={this.handleInput} placeholder="Ray Rays" required />
