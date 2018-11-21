@@ -7,7 +7,7 @@ export default (cancelToken, gameTitle) => new Promise((resolve, reject) => {
 
    // if (cache && process.env.NODE_ENV === 'production') return resolve(gameTitle ? cache.find(game => getSlug(game.Name) === gameTitle) : cache)
 
-   axios.get(`${apiPath}/api/games`, { cancelToken })
+   axios.get(`${apiPath}/games`, { cancelToken })
       .then(response => {
          const data = response.data.filter(game => game.Active)
          sessionStorage.gamesList = JSON.stringify(data);

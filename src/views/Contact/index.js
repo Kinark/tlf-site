@@ -50,7 +50,7 @@ class Contact extends React.Component {
       e.preventDefault();
       this.setState({ loading: true })
       const { author, email, msg, recaptchaToken } = this.state
-      axios.post(`${apiPath}/api/contacter`, { author, email, msg, recaptchaToken }, { cancelToken: this.activeAxios.token })
+      axios.post(`${apiPath}/contacter`, { author, email, msg, recaptchaToken }, { cancelToken: this.activeAxios.token })
          .then(res => this.setState({ success: res.data.success, loading: false, author: '', email: '', msg: '', recaptchaToken: '' }))
          .catch(() => this.setState({ success: false, loading: false }))
    }

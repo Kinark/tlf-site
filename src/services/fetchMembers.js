@@ -6,7 +6,7 @@ export default cancelToken => new Promise((resolve, reject) => {
 
    // if (cache && process.env.NODE_ENV === 'production') return resolve(cache)
 
-   axios.get(`${apiPath}/api/members`, { cancelToken })
+   axios.get(`${apiPath}/members`, { cancelToken })
       .then(response => {
          const data = response.data.filter(member => member.Active)
          sessionStorage.membersList = JSON.stringify(data);

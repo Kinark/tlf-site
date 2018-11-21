@@ -31,7 +31,7 @@ export default class Newsletter extends React.Component {
       e.preventDefault();
       this.setState({ loading: true })
       const { newsletterEmail } = this.state
-      axios.post(`${apiPath}/api/newsletteremails`, { Email: newsletterEmail }, { cancelToken: this.activeAxios.token })
+      axios.post(`${apiPath}/newsletteremails`, { Email: newsletterEmail }, { cancelToken: this.activeAxios.token })
          .then(() => this.setState({ success: true, loading: false, newsletterEmail: '' }))
          .catch(() => this.setState({ success: false, loading: false, newsletterEmail: '' }))
    }
