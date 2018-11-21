@@ -4,7 +4,7 @@ import styles from './styles.scss';
 import { FullTLF } from '~/components/TLFLogo'
 import { LifelessLogo } from '~/components/LifelessLogo'
 
-import HomeNav from '~/components/HomeNav'
+import HomeNav from '../HomeNav'
 
 const Splash = () => (
    <div className={styles.splashFullHeight}>
