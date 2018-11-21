@@ -26,6 +26,7 @@ class Contact extends React.Component {
       recaptchaToken: '',
       success: null,
       loading: false,
+      error: null,
       counter: 1
    };
 
@@ -39,23 +40,23 @@ class Contact extends React.Component {
    activeAxios = axios.CancelToken.source()
 
    // eslint-disable-next-line no-underscore-dangle
-   verifyRecaptcha = recaptchaToken => { if (this._ismounted) this.setState({ recaptchaToken }) }
+   verifyRecaptcha = recaptchaToken => this.setState({ recaptchaToken })
 
    handleInput = e => this.setState({ [e.target.name]: e.target.value })
 
-   restartForm = () => this.setState(prevState => ({ success: null, loading: false, counter: prevState.counter + 1 }))
+   restartForm = () => this.setState(prevState => ({ success: null, error: null, loading: false, counter: prevState.counter + 1 }))
 
    formHandler = e => {
       e.preventDefault();
       this.setState({ loading: true })
       const { author, email, msg, recaptchaToken } = this.state
       axios.post(`${apiPath}/contacter`, { author, email, msg, recaptchaToken }, { cancelToken: this.activeAxios.token })
-         .then(res => this.setState({ success: res.data.success, loading: false, author: '', email: '', msg: '', recaptchaToken: '' }))
-         .catch(() => this.setState({ success: false, loading: false }))
+         .then(res => this.setState({ success: res.data.success, error: res.data.error, loading: false, author: '', email: '', msg: '', recaptchaToken: '' }))
+         .catch(() => this.setState({ success: false, loading: false, error: 'no connection with the API.' }))
    }
 
    render() {
-      const { author, email, msg, success, loading, counter } = this.state
+      const { author, email, msg, success, error, loading, counter } = this.state
       return (
          <React.Fragment>
             <div className="container">
@@ -87,6 +88,15 @@ class Contact extends React.Component {
                      <h6>Your message has been sent.</h6>
                      {counter >= maxMessages && <p>I'm sorry, you've sent enough messages for today :)</p>}
                      {counter < maxMessages && <Button onClick={this.restartForm}>Send another message</Button>}
+                  </div>
+               )}
+               {success === false && (
+                  <div className="center">
+                     <i className="icon-alien xlarge no-mrg" />
+                     <h3 className="bold no-mrg">Oooops!</h3>
+                     <h6>Something went wrong</h6>
+                     <p>And the reason is: {error}</p>
+                     <Button onClick={this.restartForm}>Try again</Button>
                   </div>
                )}
                {success === false && <p>Ooops!</p>}
