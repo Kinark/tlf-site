@@ -44,9 +44,9 @@ class App extends React.Component {
       const description = 'The Last Flame is a indie game development company. We hope to lit your way and make you fall in love with our games :)';
       return (
          <AppContext.Provider value={{ inverted, appTitle, appTitleBar, turnOnInverted, turnOffInverted, changeAppTitle }}>
-            {/* <Favicon /> */}
+            <Favicon />
             <Title>{appTitle}</Title>
-            {/* <Metas description={description} /> */}
+            <Metas description={description} />
             <div id="content" className={`${styles.appColors} ${inverted ? styles.inverted : ''}`}>
                <Route path="/(.+)" component={Navbar} />
                {appTitleBar === true && <PageTitle />}
