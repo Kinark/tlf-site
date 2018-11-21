@@ -26,15 +26,21 @@ const GameTemplate = ({ game }) => (
             <div className="col xs12 m6">
                <Info game={game} />
             </div>
-            <div className="col xs12">
-               <Screenshots game={game} />
-            </div>
-            <div className="col xs12 m6">
-               <Press game={game} />
-            </div>
-            <div className="col xs12 m6">
-               <Rewards game={game} />
-            </div>
+            {game.Screenshots.length && (
+               <div className="col xs12">
+                  <Screenshots game={game} />
+               </div>
+            )}
+            {game.Press.length && (
+               <div className="col xs12 m6">
+                  <Press game={game} />
+               </div>
+            )}
+            {game.Rewards.length && (
+               <div className="col xs12 m6">
+                  <Rewards game={game} />
+               </div>
+            )}
          </div>
       </div>
    </React.Fragment>
