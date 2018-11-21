@@ -26,17 +26,17 @@ const GameTemplate = ({ game }) => (
             <div className="col xs12 m6">
                <Info game={game} />
             </div>
-            {game.Screenshots.length && (
+            {game.Screenshots.length > 0 && (
                <div className="col xs12">
                   <Screenshots game={game} />
                </div>
             )}
-            {game.Press.length && (
+            {game.presses.length > 0 && (
                <div className="col xs12 m6">
                   <Press game={game} />
                </div>
             )}
-            {game.Rewards.length && (
+            {game.rewards.length > 0 && (
                <div className="col xs12 m6">
                   <Rewards game={game} />
                </div>
