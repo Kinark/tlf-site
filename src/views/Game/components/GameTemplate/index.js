@@ -11,10 +11,10 @@ import Screenshots from './components/Screenshots'
 import Press from './components/Press'
 import Rewards from './components/Rewards'
 
-// import styles from './styles.scss';
+import styles from './styles.scss';
 
 const GameTemplate = ({ game }) => (
-   <React.Fragment>
+   <div className={styles.gameWrapper}>
       <Header game={game} />
       <SubHeader game={game} />
       <GameNavbar game={game} />
@@ -43,7 +43,7 @@ const GameTemplate = ({ game }) => (
             )}
          </div>
       </div>
-   </React.Fragment>
+   </div>
 )
 
 GameTemplate.propTypes = {
