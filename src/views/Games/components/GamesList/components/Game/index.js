@@ -8,7 +8,7 @@ import apiPath from '~/utils/apiPath';
 import styles from './styles.scss';
 
 const Game = ({ data }) => {
-   const { GamesListCover, Logo, Name, Genre, Platforms, Released, ShortDescription, id } = data;
+   const { GamesListCover, Logo, Name, Genre, Platforms, Released, ShortDescription } = data;
    return (
       <Link to={`/game/${getSlug(Name)}`}>
          <div className={styles.game} style={{ backgroundImage: `url(${apiPath}${GamesListCover.url})` }}>
