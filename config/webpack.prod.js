@@ -7,6 +7,7 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
@@ -59,6 +60,7 @@ module.exports = merge(common, {
       new CleanWebpackPlugin(['dist/**/*'], { root: path.resolve(__dirname, '../') }),
       new ImageminPlugin(ImageminPluginConfig),
       new ManifestPlugin(ManifestPluginConfig),
+      new BundleAnalyzerPlugin({ analyzerMode: 'static', reportFilename: path.resolve(__dirname, '../dist/stats/bundli-size-report.html') }),
       new MiniCssExtractPlugin({ filename: 'static/css/[name].css', chunkFilename: '[id].css' }),
       new PurifyCSSPlugin({
          paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
