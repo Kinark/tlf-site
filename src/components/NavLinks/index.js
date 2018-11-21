@@ -1,7 +1,6 @@
 import React from 'react';
 
 import NavItem from './components/NavItem';
-import './styles.scss';
 
 export default () => (
    <React.Fragment>
