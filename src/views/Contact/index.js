@@ -38,7 +38,8 @@ class Contact extends React.Component {
 
    activeAxios = axios.CancelToken.source()
 
-   verifyRecaptcha = recaptchaToken => this.setState({ recaptchaToken })
+   // eslint-disable-next-line no-underscore-dangle
+   verifyRecaptcha = recaptchaToken => { if (this._ismounted) this.setState({ recaptchaToken }) }
 
    handleInput = e => this.setState({ [e.target.name]: e.target.value })
 
