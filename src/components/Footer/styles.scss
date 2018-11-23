@@ -1,3 +1,13 @@
 .footer {
-   padding: 40px 0; // transition: .25s backround-color;
+   padding: 40px 0;
+   animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
 }
