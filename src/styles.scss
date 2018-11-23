@@ -1,7 +1,32 @@
 .appColors {
    background-color: #151122;
    transition: .25s background-color;
+   animation: fadeIn 1s;
    &.inverted {
-   background-color: #0F0F0F;
+      background-color: #0F0F0F;
+   }
+}
+
+.pageLoader {
+   position: fixed;
+   height: 100%;
+   width: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: flex;
+   align-content: center;
+   justify-content: center;
+   align-items: center;
+   background-color: #151122;
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
    }
 }

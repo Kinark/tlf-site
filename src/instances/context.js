@@ -4,9 +4,10 @@ export const AppContext = React.createContext({
    bw: false,
    appTitle: 'The Last Flame',
    appTitleBar: true,
+   generalVariables: null,
    turnOnInverted: () => { },
    turnOffInverted: () => { },
-   changeAppTitle: () => { },
+   changeAppTitle: () => { }
 });
 
 export const withContext = Component => props => (

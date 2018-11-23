@@ -4,9 +4,12 @@ import { Route, Switch } from 'react-router-dom';
 import { Title, Metas } from '~/components/Metas';
 import Favicon from '~/components/Favicon';
 import { loadReCaptcha } from 'react-recaptcha-v3'
+import axios from 'axios';
+import Loader from 'react-loader-spinner'
 
 import { AppContext } from '~/instances/context';
 import variables from '~/instances/variables';
+import fetchGeneralVariables from '~/services/fetchGeneralVariables';
 
 import PageTitle from '~/components/PageTitle';
 import Navbar from '~/components/Navbar';
@@ -27,10 +30,25 @@ class App extends React.Component {
    state = {
       inverted: false,
       appTitle: 'The Last Flame',
-      appTitleBar: true
+      appTitleBar: true,
+      generalVariables: null
    }
 
-   componentDidMount = () => loadReCaptcha(variables.recaptchaCode)
+   componentDidMount = () => {
+      fetchGeneralVariables(this.activeAxios.token).then(genVars => {
+         const generalVariables = {};
+         genVars.map(genVar => {
+            generalVariables[genVar.VariableName] = genVar.VariableValue
+            return genVar;
+         })
+         return this.setState({ generalVariables });
+      }).catch(e => console.log(e))
+      loadReCaptcha(variables.recaptchaCode)
+   }
+
+   componentWillUnmount = () => this.activeAxios.cancel('Canceled by the user.')
+
+   activeAxios = axios.CancelToken.source()
 
    turnOnInverted = () => { this.setState({ inverted: true }); };
 
@@ -38,12 +56,21 @@ class App extends React.Component {
 
    changeAppTitle = (appTitle, appTitleBar = true) => { this.setState({ appTitle, appTitleBar }); };
 
+   setGeneralVariables = generalVariables => { this.setState({ generalVariables }); };
+
    render() {
-      const { inverted, appTitle, appTitleBar } = this.state;
+      const { inverted, appTitle, appTitleBar, generalVariables } = this.state;
       const { turnOnInverted, turnOffInverted, changeAppTitle } = this;
       const description = 'The Last Flame is a indie game development company. We hope to lit your way and make you fall in love with our games :)';
+      if (!generalVariables) {
+         return (
+            <div className={styles.pageLoader}>
+               <Loader type="Ball-Triangle" color="#fafafa" height={50} width={50} />
+            </div>
+         )
+      }
       return (
-         <AppContext.Provider value={{ inverted, appTitle, appTitleBar, turnOnInverted, turnOffInverted, changeAppTitle }}>
+         <AppContext.Provider value={{ inverted, appTitle, appTitleBar, generalVariables, turnOnInverted, turnOffInverted, changeAppTitle }}>
             <Favicon />
             <Title>{appTitle}</Title>
             <Metas description={description} />
