@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import Loader from 'react-loader-spinner'
 
 import { withContext } from '~/instances/context';
 import fetchMembers from '~/services/fetchMembers';
 
 import { FlameTLF } from '~/components/TLFLogo';
-import Loader from 'react-loader-spinner'
 
 import clockImg from './images/clock_image.jpg';
 import styles from './styles.scss';
