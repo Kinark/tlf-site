@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { withContext } from '~/instances/context';
 import { FlameTLF, TypeTLF } from '~/components/TLFLogo';
-import { DiscordLink, FacebookLink, YoutubeLink, TwitterLink } from '~/components/SocialLinks';
+import SocialLink from '~/components/SocialLinks';
 
 import Newsletter from './components/Newsletter'
 
@@ -30,10 +30,10 @@ class Footer extends React.Component {
                      <h5 className="weight-thin no-mrg">Follow us</h5>
                      <h6 className="weight-thin no-mrg-top">If you want...</h6>
                      <div className="row xs-middle">
-                        <div className="col xs"><DiscordLink /></div>
-                        <div className="col xs"><FacebookLink /></div>
-                        <div className="col xs"><YoutubeLink /></div>
-                        <div className="col xs"><TwitterLink /></div>
+                        <div className="col xs"><SocialLink social="discord" href={context.generalVariables.discordServer} /></div>
+                        <div className="col xs"><SocialLink social="facebook" href={context.generalVariables.fbPage} /></div>
+                        <div className="col xs"><SocialLink social="youtube" href={context.generalVariables.ytChannel} /></div>
+                        <div className="col xs"><SocialLink social="twitter" href={context.generalVariables.twitter} /></div>
                      </div>
                   </div>
                   <div className="col xs12 m4 center">
