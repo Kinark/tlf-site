@@ -6,6 +6,7 @@ import Favicon from '~/components/Favicon';
 import { loadReCaptcha } from 'react-recaptcha-v3'
 import axios from 'axios';
 import Loader from 'react-loader-spinner'
+import ReactGA from 'react-ga';
 
 import { AppContext } from '~/instances/context';
 import variables from '~/instances/variables';
@@ -25,6 +26,9 @@ import Game from '~/views/Game';
 import styles from './styles.scss'
 import './styles.global.scss';
 import './components/Ceres/styles.global.scss';
+
+ReactGA.initialize('UA-129766006-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends React.Component {
    state = {
