@@ -12,15 +12,6 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-const postCssLoader = {
-   loader: 'postcss-loader',
-   options: {
-      config: {
-         path: './config/postcss.config.js'
-      }
-   }
-}
-
 const ManifestPluginConfig = {
    fileName: 'asset-manifest.json'
 }
@@ -31,11 +22,30 @@ const ImageminPluginConfig = {
    }
 }
 
-const cssLoader = {
+const postCssLoader = {
+   loader: 'postcss-loader',
+   options: {
+      config: {
+         path: './config/postcss.config.js'
+      }
+   }
+}
+
+const cssLoaderModules = {
    loader: 'css-loader',
    query: {
       importLoaders: 1,
-      localIdentName: 'purify_[local]_[hash:base64:5]',
+      localIdentName: 'md_[sha1:hash:hex:4]',
+      minimize: true,
+      modules: true
+   }
+}
+
+const sassLoaderModules = {
+   loader: 'css-loader',
+   query: {
+      importLoaders: 2,
+      localIdentName: 'md_[sha1:hash:hex:4]',
       minimize: true,
       modules: true
    }
@@ -51,8 +61,8 @@ module.exports = merge(common, {
       rules: [
          { test: /\.global\.css$/, use: [MiniCssExtractPlugin.loader, 'css-loader', postCssLoader] },
          { test: /\.global\.(scss|sass)$/, use: [MiniCssExtractPlugin.loader, 'css-loader', postCssLoader, 'sass-loader'] },
-         { test: /^((?!\.global).)*\.css$/, use: [MiniCssExtractPlugin.loader, cssLoader, postCssLoader] },
-         { test: /^((?!\.global).)*\.(scss|sass)$/, use: [MiniCssExtractPlugin.loader, cssLoader, postCssLoader, 'sass-loader'] },
+         { test: /^((?!\.global).)*\.css$/, use: [MiniCssExtractPlugin.loader, cssLoaderModules, postCssLoader] },
+         { test: /^((?!\.global).)*\.(scss|sass)$/, use: [MiniCssExtractPlugin.loader, sassLoaderModules, postCssLoader, 'sass-loader'] },
       ],
    },
    plugins: [
@@ -64,7 +74,7 @@ module.exports = merge(common, {
       new MiniCssExtractPlugin({ filename: 'static/css/[name].css', chunkFilename: '[id].css' }),
       new PurifyCSSPlugin({
          paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
-         purifyOptions: { info: true, minify: true, whitelist: ['*purify*'] }
+         purifyOptions: { info: true, minify: true, whitelist: ['md_*'] }
       }),
    ],
 });
